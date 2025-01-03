@@ -23,14 +23,18 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest  # Explicitly ensure pytest is installed
 
-    - name: Debug Installed Packages
+    - name: Install pytest
       run: |
-        pip list
-        which python
-        python -m pytest --version
+        pip install pytest
+        pytest --version  # Ensure pytest is installed
 
-    - name: Run pytest
+    - name: Debug Python Environment
+      run: |
+        which python
+        which pytest
+        python --version
+
+    - name: Run tests
       run: |
         pytest
